@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/ebouck/integration-template#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@bigidea/integration-connectors": "^1.0.2"
+  },
   "devDependencies": {
     "prettier": "2.7.0",
     "ts-loader": "^9.3.0",
