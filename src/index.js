@@ -1,2 +1,2 @@
 import "./tasks/helloWorld";
-import "./tasks/helloSlack";
+import "./tasks/webhookToSlack";
