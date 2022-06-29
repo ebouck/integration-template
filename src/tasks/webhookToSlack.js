@@ -11,11 +11,9 @@ defineTask({
     webhook: googleFormsWebhook,
   },
   run: async () => {
-    console.log("About to say hello to Slack");
     await slack.postMessage({
       channel: "#general", // <-- you may want to change this before sending!
       text: "Triggered by a webhook",
     });
-    console.log("Sent message to Slack successfully!");
   },
 });
