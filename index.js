@@ -2,7 +2,7 @@ import invariant from "tiny-invariant";
 // import { deploy, run } from "@bigidea/integration-connectors";
 // import "./src";
 
-export async function handler(event, context, callback) {
+exports.handler = async (event, context, callback) => {
   const { action, taskName, params } = event;
 
   invariant(action, "Required action missing");
@@ -18,4 +18,4 @@ export async function handler(event, context, callback) {
   // }
   //
   // callback("testing");
-}
+};
