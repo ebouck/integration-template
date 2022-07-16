@@ -1,6 +1,6 @@
 import invariant from "tiny-invariant";
-// import { deploy, run } from "@bigidea/integration-connectors";
-// import "./src";
+import { deploy, run } from "@bigidea/integration-connectors";
+import "./src";
 
 exports.handler = async (event, context, callback) => {
   const { action, taskName, params } = event;
@@ -10,12 +10,12 @@ exports.handler = async (event, context, callback) => {
     action === "deploy" || action === "run",
     `Invalid action, must be 'deploy' or 'run': ${action}`
   );
-  // if (action === "deploy") {
-  //   await deploy();
-  // } else if (action === "run") {
-  //   invariant(taskName, "Missing taskName");
-  //   await run(taskName, params);
-  // }
-  //
-  // callback("testing");
+  if (action === "deploy") {
+    await deploy();
+  } else if (action === "run") {
+    invariant(taskName, "Missing taskName");
+    await run(taskName, params);
+  }
+
+  callback("testing");
 };
