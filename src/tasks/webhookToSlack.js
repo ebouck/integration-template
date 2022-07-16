@@ -1,6 +1,7 @@
 import { Slack } from "@bigidea/integration-connectors";
 import slackAuth from "../auths/slackAuth";
 import googleFormsWebhook from "../webhooks/googleFormsWebhook";
+import { defineTask } from "@bigidea/integration-connectors";
 
 const slack = new Slack({ auth: slackAuth });
 
