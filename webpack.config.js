@@ -2,7 +2,7 @@
 const path = require("path");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   devtool: "inline-source-map",
   context: path.resolve(__dirname, "."),
   entry: {
@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, "./build"),
     filename: "index.js", // <--- Will be compiled to this single file
     library: "[name]",
-    libraryTarget: "commonjs2",
+    libraryTarget: "commonjs",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
