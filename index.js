@@ -16,7 +16,12 @@ const handler = async (event, context, callback) => {
 
   if (action === "deploy") {
     console.log("About to deploy");
-    await deploy();
+    try {
+      await deploy();
+    } catch (error) {
+      console.log("Failed to deploy", error);
+      callback(`Deploy failed ${error}`);
+    }
   } else if (action === "run") {
     if (!taskName) {
       callback("Missing taskName");
