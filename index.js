@@ -27,4 +27,3 @@ const handler = async (event, context, callback) => {
 };
 
 exports.handler = handler;
-window.handler = handler;
