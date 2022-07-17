@@ -1,8 +1,7 @@
-// import { defineSlackAuth } from "@bigidea/integration-connectors";
+import { defineSlackAuth } from "@bigidea/integration-connectors";
 
-const slackAuth = defineAuth({
+const slackAuth = defineSlackAuth({
   name: "slackAuth",
-  app: "slack",
 });
 
 export default slackAuth;
