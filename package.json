@@ -2,15 +2,16 @@
   "name": "integration-template",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf dist && esbuild ./index.js --entry-names=[dir]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/integration-connectors": "^1.0.11",
+    "@bigidea/integration-connectors": "^1.0.13",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
+    "esbuild": "^0.14.49",
     "prettier": "2.7.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.3",
