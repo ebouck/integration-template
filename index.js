@@ -1,6 +1,6 @@
 import invariant from "tiny-invariant";
 import { deploy, run } from "@bigidea/integration-connectors";
-import "./src";
+import { helloWorld } from "./src";
 
 exports.handler = async (event, context, callback) => {
   const { action, taskName, params } = event;
