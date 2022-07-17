@@ -3,6 +3,7 @@ import { run } from "@bigidea/integration-connectors";
 import "./src";
 
 exports.handler = async (event, context, callback) => {
+  console.log("In handler");
   const { action, taskName, params } = event;
 
   if (!action) {
@@ -14,11 +15,13 @@ exports.handler = async (event, context, callback) => {
   }
 
   if (action === "deploy") {
+    console.log("About to deploy");
     await deploy();
   } else if (action === "run") {
     if (!taskName) {
       callback("Missing taskName");
     }
+    console.log(`About to run task ${taskName}`)
     await run(taskName, params);
   }
 };
