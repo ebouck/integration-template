@@ -7,7 +7,7 @@
   },
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/integration-connectors": "^1.0.24",
+    "@bigidea/integration-connectors": "^1.0.25",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
