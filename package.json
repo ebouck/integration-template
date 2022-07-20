@@ -2,12 +2,13 @@
   "name": "integration-template",
   "version": "1.0.0",
   "scripts": {
-    "build": "rm -rf dist && esbuild ./index.js --entry-names=[dir]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=build",
+    "build": "rm -rf build && esbuild ./index.js --entry-names=[dir]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=build",
+    "task": "node cli/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/integration-connectors": "^1.0.30",
+    "@bigidea/integration-connectors": "^1.0.31",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
