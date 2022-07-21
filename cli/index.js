@@ -19,5 +19,11 @@ const promise = index.handler({ action, taskName });
 
 promise.then((result) => {
   const processedResult = { ...result, body: JSON.parse(result.body) };
-  console.log("result", processedResult);
+  const outputResult = {
+    statusCode: processedResult.statusCode,
+    body: {
+      message: processedResult.body?.message,
+    },
+  };
+  console.log("result", outputResult);
 });
