@@ -9,6 +9,7 @@
   "main": "build/index.js",
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
+    "@bigidea/integration-cli": "^1.0.2",
     "@bigidea/integration-connectors": "^1.0.35",
     "tiny-invariant": "^1.2.0"
   },
