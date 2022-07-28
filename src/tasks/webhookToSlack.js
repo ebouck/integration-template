@@ -6,7 +6,7 @@ import { defineTask } from "@bigidea/integration-connectors";
 const slack = new Slack({ auth: slackAuth });
 
 defineTask({
-  name: "Google Forms Webhook to Slack",
+  name: "webhookToSlack",
   description: "Trigger a message in Slack from a Google Forms Webhook",
   trigger: {
     webhook: googleFormsWebhook,
