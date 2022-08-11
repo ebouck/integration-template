@@ -1,16 +1,23 @@
 import { Slack } from "@bigidea/integration-connectors";
 import slackAuth from "../auths/slackAuth";
 import { defineTask } from "@bigidea/integration-connectors";
-
-const slack = new Slack({ auth: slackAuth });
+import slackChannel from "../secrets/slackChannel";
 
 defineTask({
   name: "helloSlack",
   description: "Send a message to Slack",
-  run: async () => {
+  auths: {
+    slack: slackAuth,
+  },
+  secrets: {
+    channel: slackChannel,
+  },
+  run: async ({ auths, secrets }) => {
+    const slack = new Slack({ auth: auths.slack });
+
     console.log("Ready to call slack.postMessage");
     await slack.postMessage({
-      channel: "#general", // <-- you may want to change this before sending!
+      channel: secrets.channel,
       text: "Hello Slack!",
     });
   },
