@@ -2,7 +2,7 @@ import { Slack } from "@bigidea/integration-connectors";
 import slackAuth from "../auths/slackAuth";
 import slackWebhook from "../webhooks/slackWebhook";
 import { defineTask } from "@bigidea/integration-connectors";
-import slackChannel from "../secrets/slackChannel";
+import { slackChannel } from "../variables/slack";
 
 const slack = new Slack({ auth: slackAuth });
 
@@ -15,14 +15,14 @@ defineTask({
   auths: {
     slack: slackAuth,
   },
-  secrets: {
+  variables: {
     channel: slackChannel,
   },
-  run: async ({ auths, secrets }) => {
+  run: async ({ auths, variables }) => {
     const slack = new Slack({ auth: auths.slack });
 
     await slack.postMessage({
-      channel: secrets.channel, // <-- you may want to change this before sending!
+      channel: variables.channel,
       text: "Triggered by a webhook",
     });
   },
