@@ -1,47 +1,56 @@
 import {
   defineTask,
   defineWebhook,
+  defineVariable,
   Github,
   Slack,
 } from "@bigidea/integration-connectors";
-import githubAuth from "../auths/githubAuth";
-import slackAuth from "../auths/slackAuth";
-import { githubOwner, githubRepo } from "../variables/github";
-import { slackChannel } from "../variables/slack";
 
-const githubWorkflowRun = defineWebhook({ name: "githubWorkflowRun" });
+const githubAuth = Github.defineAuth({
+  name: "github",
+});
+const slackAuth = Slack.defineAuth({
+  name: "slack",
+});
+const owner = defineVariable({ name: "owner" });
+const repo = defineVariable({ name: "repo" });
+const slackChannel = defineVariable({ name: "slackChannel" });
+const webhook = defineWebhook({ name: "github" });
+
+Github.defineSubscription({
+  name: "githubWorkflowRun",
+  auth: githubAuth,
+  variables: {
+    owner,
+    repo,
+  },
+  webhook,
+  subscribeArgs: ({ variables, webhook }) =>
+    Github.subscribeArgs({
+      owner: variables.owner,
+      repo: variables.repo,
+      config: {
+        url: webhook,
+      },
+      events: ["workflow_run"],
+    }),
+});
 
 defineTask({
   name: "githubPushToSlack",
   trigger: {
-    webhook: githubWorkflowRun,
+    webhook,
   },
   auths: {
     github: githubAuth,
     slack: slackAuth,
   },
-
   variables: {
-    owner: githubOwner,
-    repo: githubRepo,
-    channel: slackChannel,
-  },
-  deploy: async ({ auths, variables, webhook }) => {
-    const { owner, repo } = variables;
-    const github = new Github({ auth: auths.github });
-
-    return new github.RepositoryWebhook({
-      name: "githubPushToSlack:webhook",
-      owner,
-      repo,
-      config: {
-        url: webhook,
-      },
-      events: ["push"],
-    });
+    owner,
+    repo,
+    slackChannel,
   },
   run: async ({ data, auths, variables }) => {
-    const { channel } = variables;
     const github = new Github({ auth: auths.github });
     const slack = new Slack({ auth: auths.slack });
 
@@ -52,11 +61,8 @@ defineTask({
 
     const payload = github.pushPayload(data);
 
-    console.log("payload", payload);
-
-    console.log("received push webhook");
     await slack.postMessage({
-      channel,
+      slackChannel,
       text: `Got a push from ${payload.pusher.email} on repo ${variables.repo}`,
     });
   },

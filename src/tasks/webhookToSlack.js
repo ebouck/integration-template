@@ -1,28 +1,25 @@
-import { Slack } from "@bigidea/integration-connectors";
-import slackAuth from "../auths/slackAuth";
-import slackWebhook from "../webhooks/slackWebhook";
-import { defineTask } from "@bigidea/integration-connectors";
-import { slackChannel } from "../variables/slack";
-
-const slack = new Slack({ auth: slackAuth });
+import {
+  defineTask,
+  defineWebhook,
+  Slack,
+} from "@bigidea/integration-connectors";
 
 defineTask({
   name: "webhookToSlack",
-  description: "Trigger a message in Slack from a Google Forms Webhook",
+  description: "Trigger a message in Slack from a Webhook",
   trigger: {
-    webhook: slackWebhook,
+    webhook: defineWebhook({ name: "slack" }),
   },
   auths: {
-    slack: slackAuth,
+    slack: Slack.defineAuth({
+      name: "slack",
+    }),
   },
-  variables: {
-    channel: slackChannel,
-  },
-  run: async ({ auths, variables }) => {
+  run: async ({ auths }) => {
     const slack = new Slack({ auth: auths.slack });
 
     await slack.postMessage({
-      channel: variables.channel,
+      channel: "#general", // <-- Might want to change!
       text: "Triggered by a webhook",
     });
   },
