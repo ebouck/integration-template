@@ -11,7 +11,9 @@
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
     "@bigidea/integration-cli": "^1.0.13",
-    "@bigidea/integration-connectors": "^1.0.61",
+    "@bigidea/integration": "latest",
+    "@bigidea/slack": "latest",
+    "@bigidea/github": "latest",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
@@ -21,5 +23,8 @@
     "typescript": "^4.7.3",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
+  },
+  "engines": {
+    "node": ">=14.19"
   }
 }

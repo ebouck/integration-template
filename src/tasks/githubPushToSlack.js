@@ -2,9 +2,9 @@ import {
   defineTask,
   defineWebhook,
   defineVariable,
-  Github,
-  Slack,
-} from "@bigidea/integration-connectors";
+} from "@bigidea/integration";
+import { Github } from "@bigidea/github";
+import { Slack } from "@bigidea/slack";
 
 const githubAuth = Github.defineAuth({
   name: "github",

@@ -1,4 +1,5 @@
-import { defineTask, Slack } from "@bigidea/integration-connectors";
+import { defineTask } from "@bigidea/integration";
+import { Slack } from "@bigidea/slack";
 
 defineTask({
   name: "helloSlack",

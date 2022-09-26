@@ -1,8 +1,5 @@
-import {
-  defineTask,
-  defineWebhook,
-  Slack,
-} from "@bigidea/integration-connectors";
+import { defineTask, defineWebhook } from "@bigidea/integration";
+import { Slack } from "@bigidea/slack";
 
 defineTask({
   name: "webhookToSlack",

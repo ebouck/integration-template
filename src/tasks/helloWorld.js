@@ -1,4 +1,4 @@
-import { defineTask } from "@bigidea/integration-connectors";
+import { defineTask } from "@bigidea/integration";
 
 defineTask({
   name: "helloWorld",
