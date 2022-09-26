@@ -10,10 +10,10 @@
   "main": "build/index.js",
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/integration-cli": "^1.0.13",
+    "@bigidea/cli": "latest",
     "@bigidea/integration": "latest",
-    "@bigidea/slack": "latest",
     "@bigidea/github": "latest",
+    "@bigidea/slack": "latest",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
