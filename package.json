@@ -5,8 +5,8 @@
     "login": "integration login",
     "dev": "integration dev",
     "build": "esbuild ./index.js --entry-names=[dir]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=build",
-    "repo": "node cli/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "integration deploy prod"
   },
   "main": "build/index.js",
   "homepage": "https://github.com/ebouck/integration-template#readme",
