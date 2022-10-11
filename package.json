@@ -2,7 +2,6 @@
   "name": "integration-template",
   "version": "1.0.0",
   "scripts": {
-    "login": "integration login",
     "dev": "integration dev",
     "build": "esbuild ./index.js --entry-names=[dir]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,9 +10,9 @@
   "main": "build/index.js",
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/cli": "latest",
-    "@bigidea/integration": "latest",
+    "@bigidea/cli": "file:../integration-mono/packages/@bigidea/cli",
     "@bigidea/github": "latest",
+    "@bigidea/integration": "latest",
     "@bigidea/slack": "latest",
     "tiny-invariant": "^1.2.0"
   },
