@@ -10,7 +10,7 @@
   "main": "build/index.js",
   "homepage": "https://github.com/ebouck/integration-template#readme",
   "dependencies": {
-    "@bigidea/cli": "file:../integration-mono/packages/@bigidea/cli",
+    "@bigidea/cli": "latest",
     "@bigidea/github": "latest",
     "@bigidea/integration": "latest",
     "@bigidea/slack": "latest",
